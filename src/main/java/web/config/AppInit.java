@@ -1,6 +1,10 @@
 package web.config;
 
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import javax.naming.Context;
+import javax.servlet.FilterRegistration;
 
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
 
