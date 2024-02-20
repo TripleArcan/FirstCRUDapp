@@ -9,4 +9,7 @@ public interface UserService {
 
     public void addUser(User user);
 
+    void deleteEntity(User user);
+
+    void updateEntity(User user);
 }

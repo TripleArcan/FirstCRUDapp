@@ -26,4 +26,14 @@ public class UserServiceDAO implements UserService {
     public void addUser(User user) {
         entityManager.persist(user);
     }
+
+    @Override
+    public void deleteEntity(User user) {
+        entityManager.remove(user);
+    }
+
+    @Override
+    public void updateEntity(User user) {
+        entityManager.merge(user);
+    }
 }
