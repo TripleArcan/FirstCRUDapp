@@ -39,6 +39,12 @@ public class UserServiceDAO implements UserService {
 
     @Override
     @Transactional
+    public User getUserById(Long id) {
+        return entityManager.find(User.class, id);
+    }
+
+    @Override
+    @Transactional
     public void updateUser(User user) {
         entityManager.merge(user);
     }

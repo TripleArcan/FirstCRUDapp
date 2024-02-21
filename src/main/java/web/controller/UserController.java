@@ -49,4 +49,17 @@ public class UserController {
         return "redirect:/allusers";
     }
 
+    @GetMapping("/edituser")
+    public String showUpdateUserForm(@RequestParam("id") Long id, Model model) {
+        User user = userService.getUserById(id);
+        model.addAttribute("user", user);
+        return "edit";
+    }
+
+    @PostMapping("/edituser")
+    public String updateUser(@ModelAttribute("user") User user) {
+        userService.updateUser(user);
+        return "redirect:/allusers";
+    }
+
 }
