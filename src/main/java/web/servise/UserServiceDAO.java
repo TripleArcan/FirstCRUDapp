@@ -10,7 +10,6 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-@Transactional
 @Component
 public class UserServiceDAO implements UserService {
 
@@ -19,21 +18,28 @@ public class UserServiceDAO implements UserService {
 
 
     @Override
+    @Transactional
     public List<User> getAllUsers() {
         return entityManager.createQuery("SELECT e FROM User e", User.class).getResultList();
     }
     @Override
+    @Transactional
     public void addUser(User user) {
         entityManager.persist(user);
     }
 
     @Override
-    public void deleteEntity(User user) {
-        entityManager.remove(user);
+    @Transactional
+    public void deleteUser(Long id) {
+        User user = entityManager.find(User.class, id);
+        if (user != null) {
+            entityManager.remove(entityManager.contains(user) ? user : entityManager.merge(user));;
+        }
     }
 
     @Override
-    public void updateEntity(User user) {
+    @Transactional
+    public void updateUser(User user) {
         entityManager.merge(user);
     }
 }
