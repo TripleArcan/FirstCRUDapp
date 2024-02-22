@@ -1,10 +1,12 @@
 package web.servise;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.model.User;
 
 import java.util.List;
 
+@Service
 public interface UserService {
     List<User> getAllUsers();
 
@@ -12,7 +14,6 @@ public interface UserService {
 
     void deleteUser(Long id);
 
-    @Transactional
     User getUserById(Long id);
 
     void updateUser(User user);

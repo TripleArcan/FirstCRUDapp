@@ -1,9 +1,10 @@
-package web.servise;
+package web.dao;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import web.model.User;
+import web.servise.UserService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -38,7 +39,6 @@ public class UserServiceDAO implements UserService {
     }
 
     @Override
-    @Transactional
     public User getUserById(Long id) {
         return entityManager.find(User.class, id);
     }
